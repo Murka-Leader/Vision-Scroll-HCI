@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision-Scroll: Gesture Interface</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/vision_bundle.mjs" type="module"></script>
+</head>
+<body>
+
+    <div id="loading" class="loading-overlay">
+        <h2>Initializing Computer Vision...</h2>
+        <p>Loading MediaPipe Face Landmarker</p>
+    </div>
+
+    <header>
+        <div>
+            <h1 style="margin:0; font-size: 1.2rem;">VisionScroll <span id="status" class="status-badge">Model Ready</span></h1>
+        </div>
+        <div class="controls">
+            <button id="btn-calibrate">Reset Center</button>
+            <button id="btn-toggle">Start Camera</button>
+        </div>
+    </header>
+
+    <div id="tracking-container">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas id="overlay"></canvas>
+    </div>
+
+    <div id="scroll-indicator">⬇️</div>
+
+    <main>
+        <article>
+            <h1>The Future of Hands-Free Browsing</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted);">Enable your camera and move your head up or down to scroll. Keep your nose in the "dead zone" to read comfortably.</p>
+            
+            <div class="gallery" id="gallery-container"></div>
+
+            <section style="margin-top: 4rem;">
+                <h2>How it Works</h2>
+                <p>We track the tip of the nose (Landmark #4). After calibration, we monitor Y-axis displacement to trigger scrolling.</p>
+            </section>
+
+            <div class="gallery" id="gallery-container-2"></div>
+        </article>
+    </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
